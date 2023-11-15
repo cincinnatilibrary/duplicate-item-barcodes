@@ -25,8 +25,22 @@
   <table>
     <tr>
       <th>#</th>
+      <!-- barcode_group_num, -->
+      <th>Group #</th>
+      <!-- barcode, -->
       <th>Barcode</th>
-      <th>Item Record Numbers</th>
+      <!-- item_record_num, -->
+      <th>Item Record</th>
+      <!-- icode1, -->
+      <th>icode1</th>
+      <!-- itype_code_num, -->
+      <th>itype num</th>
+      <!-- title, -->
+      <th>Title</th>
+      <!-- item_created, -->
+      <th>Created</th>
+      <!-- item_updated -->
+      <th>Updated</th>
     </tr>
     <!-- Assuming `results` is a variable that contains the query result -->
     <!-- Each `result` is a dictionary with keys 'item_record_num', 'item_barcode', 'messages' -->
@@ -34,18 +48,18 @@
     {% for result in results %}
       <tr>
         <td>{{ loop.index }}</td>
+        <td>{{ result['barcode_group_num'] }}</td>
         <td>{{ result['barcode'] }}</td>
-        <td>
-          <ul>
-            {% for record_id in result['item_record_id_array'] %}
-              <li>{{ record_id }}</li>
-            {% endfor %}
-          </ul>
-        </td>
+        <td>{{ result['item_record_num'] }}</td>
+        <td>{{ result['icode1'] }}</td>
+        <td>{{ result['itype_code_num'] }}</td>
+        <td>{{ result['title'] }}</td>
+        <td>{{ result['item_created'] }}</td>
+        <td>{{ result['item_updated'] }}</td>
       </tr>
     {% endfor %}
   </table>
 
-  <p>{{ version }}</p>
+  <p><a href="{{ version }}">{{ version }}</a></p>
 </body>
 </html>
